@@ -1,6 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Personal
+/terraform-aws.pub
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
