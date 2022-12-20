@@ -3,6 +3,7 @@
 
 # Personal
 /terraform-aws.pub
+.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate
