@@ -12,6 +12,7 @@ resource "aws_instance" "dev" {
   ami = "ami-0574da719dca65348"
   instance_type = "t2.micro"
   key_name = "terraform-aws"
+  vpc_security_group_ids = ["sg-04d92f1cb804ca3b8"]
   tags = {
     Name = "dev-${count.index}"
   }
