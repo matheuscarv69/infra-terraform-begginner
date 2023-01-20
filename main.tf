@@ -32,7 +32,7 @@ resource "aws_security_group" "ssh-access" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["45.232.37.215/32"]
+    cidr_blocks = ["45.232.38.143/32"]
   }
 
   tags = {
