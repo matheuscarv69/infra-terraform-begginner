@@ -16,7 +16,7 @@ resource "aws_instance" "dev" {
   ami                    = "ami-0b0d54b52c62864d6"
   instance_type          = "t2.micro"
   key_name               = "terraform-aws"
-  vpc_security_group_ids = ["sg-0dc8c8ff41b527c09"]
+  vpc_security_group_ids = ["${aws_security_group.ssh-access.id}"]
   tags = {
     Name = "dev-${count.index}"
   }
@@ -38,4 +38,17 @@ resource "aws_security_group" "ssh-access" {
   tags = {
     Name = "ssh-access"
   }
+}
+
+resource "aws_s3_bucket" "dev4" {
+  bucket = "infra-terraform-begginner-dev4"
+
+  tags = {
+    Name = "infra-terraform-begginner-dev4"
+  }
+}
+
+resource "aws_s3_bucket_acl" "infra-terraform-begginner-dev4" {
+  bucket = aws_s3_bucket.dev4.id
+  acl    = "private"
 }
