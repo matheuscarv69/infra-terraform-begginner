@@ -19,8 +19,8 @@ provider "aws" {
 resource "aws_instance" "dev" {
   count                  = 3
   ami                    = var.amis["sa-east-1"]
-  instance_type          = "t2.micro"
-  key_name               = "terraform-aws"
+  instance_type          = var.ec2_instance_type
+  key_name               = var.key_name
   vpc_security_group_ids = ["${aws_security_group.ssh-access.id}"]
   tags = {
     Name = "dev-${count.index}"
@@ -29,8 +29,8 @@ resource "aws_instance" "dev" {
 
 resource "aws_instance" "dev-4" {
   ami                    = var.amis["sa-east-1"]
-  instance_type          = "t2.micro"
-  key_name               = "terraform-aws"
+  instance_type          = var.ec2_instance_type
+  key_name               = var.key_name
   vpc_security_group_ids = ["${aws_security_group.ssh-access.id}"]
   tags = {
     Name = "dev-4"
@@ -43,8 +43,8 @@ resource "aws_instance" "dev-4" {
 resource "aws_instance" "dev-5" {
   provider               = aws.us-east-1
   ami                    = var.amis["us-east-1"]
-  instance_type          = "t2.micro"
-  key_name               = "terraform-aws"
+  instance_type          = var.ec2_instance_type
+  key_name               = var.key_name
   vpc_security_group_ids = ["${aws_security_group.ssh-access-us-east-1.id}"]
   tags = {
     Name = "dev-5"

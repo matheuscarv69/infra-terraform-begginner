@@ -12,3 +12,16 @@ variable "cdirs_remote_access" {
 
   default = ["45.232.36.202/32", "45.232.38.143/32"]
 }
+
+variable "ec2_instance_type" {
+  type = string
+
+  default = "t2.micro"
+}
+
+variable "key_name" {
+  type = string
+
+  default = "terraform-aws"
+  
+}
