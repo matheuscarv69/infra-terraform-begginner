@@ -8,10 +8,28 @@ resource "aws_security_group" "ssh-access" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["45.232.38.143/32"]
+    cidr_blocks = ["45.232.36.202/32"]
   }
 
   tags = {
     Name = "ssh-access"
+  }
+}
+
+resource "aws_security_group" "ssh-access-us-east-1" {
+  provider    = aws.us-east-1
+  name        = "ssh-access-us-east-1"
+  description = "ssh-access-us-east-1 for ec2 instances"
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["45.232.36.202/32"]
+  }
+
+  tags = {
+    Name = "ssh-access-us-east-1"
   }
 }
