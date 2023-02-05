@@ -66,3 +66,16 @@ resource "aws_s3_bucket_acl" "infra-terraform-begginner-dev-4" {
   bucket = aws_s3_bucket.dev-4.id
   acl    = "private"
 }
+
+resource "aws_s3_bucket" "homologation" {
+  bucket = "infra-terraform-begginner-homologation"
+
+  tags = {
+    Name = "infra-terraform-begginner-homologation"
+  }
+}
+
+resource "aws_s3_bucket_acl" "infra-terraform-begginner-homologation" {
+  bucket = aws_s3_bucket.homologation.id
+  acl    = "private"
+}
